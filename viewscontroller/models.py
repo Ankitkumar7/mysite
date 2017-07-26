@@ -73,5 +73,10 @@ class music(models.Model):
     def __str__(self):
 		return self.title
 
-class userAddDiet(models.Model):
-	dietName = models.CharField(max_length=200)
+class shareYourWeight(models.Model):
+	name = models.CharField(max_lenght=200)
+	age  = models.CharField(max_length=200)
+	weight = models.CharField(max_lenght=200)
+	creationtime = models.DateTimeField()
+	def __str__(self):
+		return self.name
