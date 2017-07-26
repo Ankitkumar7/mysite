@@ -74,9 +74,9 @@ class music(models.Model):
 		return self.title
 
 class shareYourWeight(models.Model):
-	name = models.CharField(max_lenght=200)
+	name = models.CharField(max_length=200)
 	age  = models.CharField(max_length=200)
-	weight = models.CharField(max_lenght=200)
+	weight = models.CharField(max_length=200)
 	creationtime = models.DateTimeField()
 	def __str__(self):
 		return self.name
