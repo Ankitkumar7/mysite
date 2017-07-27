@@ -1,5 +1,11 @@
 from rest_framework import serializers
+
 from .models import dayOne, dayTwo, dayThree, dayFour, dayFive, daySix, music
+
+from rest_framework import serializers
+
+from .models import dayOne, dayTwo, dayThree, dayFour, dayFive, daySix, music,shareYourWeight
+
 
 class StockSerializerOne(serializers.ModelSerializer):
 
@@ -48,4 +54,6 @@ class StockSerializerMusic(serializers.ModelSerializer):
 	class Meta:
 		model = music
 		# fields = ('ticker's, 'volume')
+		fields = '__all__'
+
 		fields = '__all__'

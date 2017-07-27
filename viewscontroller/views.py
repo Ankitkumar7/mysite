@@ -8,6 +8,10 @@ from rest_framework import status
 from .models import dayOne, dayTwo, dayThree, dayFour, dayFive, daySix, music
 from .serializers import StockSerializerOne, StockSerializerTwo, StockSerializerThree, StockSerializerFour, StockSerializerFive, StockSerializerSix,StockSerializerMusic
 
+from .models import dayOne, dayTwo, dayThree, dayFour, dayFive, daySix, music
+
+
+
 
 
 # Get the data from day one model
@@ -61,5 +65,5 @@ class music_view(APIView):
 		dayone = music.objects.all()
 		serializer = StockSerializerMusic(dayone, many=True)
 		return Response(serializer.data)
-	def post(self, request):
-		pass
+
+
