@@ -19,14 +19,5 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from viewscontroller import views
 urlpatterns = [
  	url(r'^admin/', admin.site.urls),
-    url(r'^dayone/', views.dayOneView.as_view()),
-    url(r'^daytwo/', views.dayTwoView.as_view()),
-    url(r'^daythree/', views.dayThreeView.as_view()),
-    url(r'^dayfour/', views.dayFourView.as_view()),
-    url(r'^dayfive/', views.dayFiveView.as_view()),
-    url(r'^daysix/', views.daySixView.as_view()),
-    url(r'^music/', views.music_view.as_view())
-
-
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
