@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
+from models import userBalance
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -20,3 +21,12 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password')
+
+class userBalanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = userBalance
+        fields = [
+            'pk',
+            'balance',
+            'user'
+        ]
