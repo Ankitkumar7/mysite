@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
-from models import userBalance, userInfo
+from models import userBalance, userInfo, isApproved
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -37,4 +37,12 @@ class UserMobileNumber(serializers.ModelSerializer):
         fields = [
             'user',
             'mobileNumber'
+        ]
+
+class isApprovedSerial(serializers.ModelSerializer):
+    class Meta:
+        model = isApproved
+        fields = [
+            'user',
+            'isApproved'
         ]

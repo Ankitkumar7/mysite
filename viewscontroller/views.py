@@ -1,10 +1,10 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, generics, permissions
-from serializers import  userBalanceSerializer,UserSerializer, UserMobileNumber
+from serializers import  userBalanceSerializer,UserSerializer, UserMobileNumber,isApprovedSerial
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
-from models import userBalance, userInfo
+from models import userBalance, userInfo, isApproved
 from rest_framework.generics import (
     CreateAPIView
 )
@@ -27,7 +27,7 @@ class UserCreate(APIView):
             if user:
                 token = Token.objects.create(user=user)
                 json = serializer.data
-                json['token'] = token.key
+                json['token'] = user
                 return Response(json, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -62,6 +62,14 @@ class userMobileNumber(generics.ListAPIView):
         queryset = queryset.filter(user__username = username)
         return queryset
     # def post(self, request):
+
+class isApprovedView(generics.ListAPIView):
+    serializer_class = isApprovedSerial
+    def get_queryset(self):
+        queryset = isApproved.objects.all()
+        username =  self.kwargs['username']
+        queryset = queryset.filter(user__username = username)
+        return queryset
 
 class CreateMobileNumberView(CreateAPIView):
     queryset = userInfo.objects.all()

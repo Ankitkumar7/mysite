@@ -14,3 +14,10 @@ class userInfo(models.Model):
     mobileNumber = models.IntegerField(max_length=15)
     def __unicode__(self):
         return str(self.user)
+
+class isApproved(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    isApproved = models.BooleanField(default=False)
+    def __unicode__(self):
+        return str(self.user)
+
