@@ -11,5 +11,8 @@ urlpatterns = [
     url(r'^login/$',view=vw.obtain_auth_token),
     url(r'^updateuserbalance/(?P<pk>\d+)/$', views.updateUserBalance.as_view()),
     url('^getbalance/(?P<username>.+)/$', views.getUserBalance.as_view()),
+    url('^getMobileNumber/(?P<username>.+)/$', views.userMobileNumber.as_view()),
+    # url(r'addmobile/$', views.addMobileNumber().as_view, name='addMobile')
+     url(r'addmobile', views.CreateMobileNumberView.as_view())
 
 ]
