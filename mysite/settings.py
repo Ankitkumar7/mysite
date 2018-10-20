@@ -25,7 +25,7 @@ SECRET_KEY = '1^wb7^nw#5ojo_+28kh%t@a)(8@)%c$9q-&l%^)n##3#0e%vg0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://serverside.pythonanywhere.com']
 
 
 # Application definition
@@ -112,7 +112,12 @@ DATABASES = {
 REST_FRAMEWORK = {
   'DEFAULT_AUTHENTICATION_CLASSES': (
       'rest_framework.authentication.TokenAuthentication',
-    )
+    ),
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
 }
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
