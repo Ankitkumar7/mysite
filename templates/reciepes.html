@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+                        <meta name="description" content="">
+                        <meta name="author" content="">
+                        <link rel="icon" href="../../favicon.ico">
+
+                        <title>Welcome India </title>
+                        <!-- Bootstrap Framework CDDN Links -->
+                        <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+                        <link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+                        <link href="https://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
+                        <script src="https://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+</head>
+<body>
+
+    <div class="container">
+      <div class="header clearfix">
+       
+      </div>
+
+      <div class="jumbotron">
+        
+  
+
+                <div class="jumbotron">
+                  <hr>
+                  <!--If user is login we will show the data -->
+                    {% if user.is_authenticated %}
+                  <!-- Iterating over get_recipes instance with target identifier "instance" to get fetch each data from db-->
+                      {% for instance in get_recipes %}
+                       <h1>{{instance.recipes_name}}</h1>
+                       <img src={{instance.imgurl}} width="990", height="300">
+                       <h2><b>Instruction</h2>
+                       <p>{{instance.content}}</p>
+
+                      {% endfor %}
+      <!-- If user is not login, Hide Everything and show this message -->
+                    {% else %}
+                        <p>Login Pls</p>
+                    {% endif %}
+
+
+
+          </div>
+</div> 
+  <footer class="footer">
+        <p>&copy; Developed By, Ankit kumar</p>
+  </footer>
+
+    
+
+
+  </body>
+</html>

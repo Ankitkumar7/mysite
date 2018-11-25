@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome India | Recipes</title>
+
+   
+    <link href="https://blackrockdigital.github.io/startbootstrap-blog-post/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://blackrockdigital.github.io/startbootstrap-blog-post/css/blog-post.css" rel="stylesheet">
+
+   
+
+</head>
+
+
+
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <h3 style="color:white;">Share Your Recipes</h3>
+    </nav>
+    <!-- post section -->
+    <div class="well">
+                    <h4>Share a recipe</h4>
+                   <form method="POST" action=''>
+                    {% csrf_token %}
+
+                        <div class="form-group">
+                              {{form.as_p}} 
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <hr>
+              <!-- comment section -->
+         <div class="media">
+          <a class="pull-left" href="#">
+            {% if user.is_authenticated %}
+            <img class="media-object" src="http://www.brandcrowd.com/gallery/brands/pictures/picture13009023617661.jpg" alt="recipe">
+            {% for instances in getPost %}<br>
+          </a>
+                    <div class="media-body">
+
+                    <h4 class="media-heading">{{ instances.name }}
+                     <small>{{ instances.timestamp }}</small>
+                     </h4> 
+                     {{ instances.content }}
+                      <hr>
+            {% endfor %}
+            </div>
+                </div>
+                
+             {% else %}
+    <a href="http://127.0.0.1:8000/login/">Please Login</a><br>
+    <a href="http://127.0.0.1:8000/register/">Register To Enjoy Recipes</a>
+    {% endif %}
+    </h3>
+  </body>
+</html>
+
